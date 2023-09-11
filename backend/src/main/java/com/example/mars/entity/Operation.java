@@ -25,7 +25,11 @@ public class Operation {
 
     private double op1;
     private double op2;
-    private String operations []= {"add", "deduct", "multiply", "divide"};
+    //private String add;
+    //private String deduce;
+    //private String multiply;
+    //private String divide;
+    private String operations []= {"add", "deduce", "multiply", "divide"};
 
 
 

@@ -1,15 +1,24 @@
 package com.example.mars.service;
 
 
+import com.example.mars.entity.Operation;
+import com.example.mars.entity.Result;
+import com.example.mars.repository.ResultRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ResultService {
-    public double add(Long id,int result) {
-        return result;
+    @Autowired
+    ResultRepository resultRepository;
+
+    public List<Result> getAllResults() {
+        return resultRepository.findAll();
     }
 
-    public int get(Long id, int result) {
-        return result;
+    public Result addResult(Result result) {
+        return resultRepository.save(result);
     }
 }

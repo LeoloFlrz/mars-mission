@@ -4,22 +4,21 @@ import com.example.mars.entity.Operation;
 import com.example.mars.service.OperationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
-@RequestMapping("/operation")
+@RequestMapping("/operations")
+@CrossOrigin("*")
 public class OperationController {
 
     @Autowired
     private OperationService operationService;
 
-    @PostMapping("/calculate")
-    public ResponseEntity<?> calcular(@RequestBody Operation operation) {
+    @PostMapping
+    public ResponseEntity<?> calculate(@RequestBody Operation operation) {
         double result = 0.0;
         String election = Arrays.toString(operation.getOperations());
 
@@ -40,5 +39,11 @@ public class OperationController {
                 return ResponseEntity.badRequest().body("Not a valid operator");
         }
         return ResponseEntity.ok(result);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Operation>> AllOperations() {
+        List<Operation> operations = operationService.getAllOperations();
+        return ResponseEntity.ok(operations);
     }
 }

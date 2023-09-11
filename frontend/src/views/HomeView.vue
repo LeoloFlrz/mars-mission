@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Calculator from '../components/icons/Calculator.vue';
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Calculator />
   </main>
 </template>
