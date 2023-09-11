@@ -1,9 +1,6 @@
 package com.example.mars.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +19,14 @@ public class Operation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "result_id", referencedColumnName = "id")
+    private Result result;
+
     private double op1;
     private double op2;
     private String operations []= {"add", "deduct", "multiply", "divide"};
-    private String result;
+
+
+
 }
